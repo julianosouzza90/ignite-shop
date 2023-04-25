@@ -37,7 +37,7 @@ const [sliderRef] = useKeenSlider({
               <span>{new Intl.NumberFormat('pt-br',{
                 style: 'currency',
                 currency: 'BRL'
-              }).format(product.p)}</span>
+              }).format(product.price)}</span>
             </div>
             <AddToCartButton>
                 <Handbag size={35}/>

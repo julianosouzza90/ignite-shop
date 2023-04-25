@@ -21,13 +21,12 @@ export default function Product({product}: ProductProps) {
   return (
     <ProductDetailsContainer>
       <ImageContainer>
-        <Image src={product.productImage} alt="" width={320} height={320}/>
+        <Image src={product?.productImage} alt="" width={320} height={320}/>
       </ImageContainer>
       <ProductDetails>
-          <h2>Camiseta Beyond the Limits</h2>
-          <span>R$ 79,90</span>
-          <p>Tempus fermentum eget lacus, quis ante. Potenti sit pharetra, ridiculus amet. Bibendum pretium arcu arcu eget viverra at metus donec hendrerit. Rhoncus, nunc, eu at ac. 
-            At massa, fermentum amet ornare cras tincidunt nunc tincidunt. Netus lorem nulla nulla mattis integer velit dictum proin nibh.</p>
+          <h2>{product.name}</h2>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
         <ButtonAddToCart>Colocar na sacola</ButtonAddToCart>
       </ProductDetails>
     </ProductDetailsContainer>
@@ -39,7 +38,7 @@ export const  getStaticPaths: GetStaticPaths = () => {
 
   return {
     paths: [],
-    fallback: false
+    fallback: 'blocking'
   }
 }
 export const getStaticProps: GetStaticProps<any, {id: string}> = async ({params}) => {
@@ -56,7 +55,7 @@ export const getStaticProps: GetStaticProps<any, {id: string}> = async ({params}
       name: product.name,
       description: product.description,
       productImage: product.images[0],
-      price:currencyBrlFormat(price.unit_amount as number),
+      price:currencyBrlFormat(price.unit_amount as number / 100),
       priceId: price.id
      }
     }

@@ -61,7 +61,7 @@ export const AddToCartButton = styled('button',{
   height: '5.6rem',
   border: 'none',
   borderRadius: 8,
-
+  zIndex: 9,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

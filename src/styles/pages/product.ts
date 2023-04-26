@@ -1,7 +1,8 @@
 import { styled } from "..";
 
 export const ProductDetailsContainer = styled('section',{
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
   gap: '7.2rem',
 })
 
@@ -9,7 +10,6 @@ export const ImageContainer = styled('div',{
   background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
   borderRadius: 8,
   maxHeight: '70vh',
-  maxWidth: '600px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -23,7 +23,7 @@ export const ImageContainer = styled('div',{
 
 export const ProductDetails = styled('div',{
   display: 'flex',
-  flex: 1,
+
   flexDirection: 'column',
   position: 'relative',
 

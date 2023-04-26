@@ -7,16 +7,24 @@ import { GetStaticProps } from "next";
 import Stripe from "stripe";
 import Link from "next/link";
 import {Handbag} from "@phosphor-icons/react";
-interface HomeProps {
-  products: {
-    id: string
+import { useCart } from "@/hooks/useCart";
+
+interface Product {
+  
+    productId: string,
+    priceId: string,
     name: string
     description: string
     productImage: string
     price: number
-  }[]
+  
+}
+interface HomeProps {
+  products: Product[]
 }
 export default function Home({products}: HomeProps) {
+const {addItemToCart} = useCart()
+
 const [sliderRef] = useKeenSlider({
   slides: {
     perView: 3,
@@ -28,7 +36,7 @@ const [sliderRef] = useKeenSlider({
     <HomeContainer ref={sliderRef} className="keen-slider">
        {
           products.map(product => (
-          <Link href={`product/${product.id}`} key={product.id} >
+          <Link href={`product/${product.productId}`} key={product.productId} >
               <Product className="keen-slider__slide">
           <Image src={product.productImage} alt="" width={400} height={400} />
           <footer>
@@ -39,7 +47,7 @@ const [sliderRef] = useKeenSlider({
                 currency: 'BRL'
               }).format(product.price)}</span>
             </div>
-            <AddToCartButton>
+            <AddToCartButton onClick={() => addItemToCart(product)}>
                 <Handbag size={35}/>
             </AddToCartButton>
           </footer>
@@ -60,11 +68,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const products = response.data.map(product => {
     const price = product.default_price as Stripe.Price
     return {
-      id: product.id,
+      productId: product.id,
+      priceId: price.id,
       name: product.name,
       description: product.description,
       productImage: product.images[0],
-      price: price.custom_unit_amount
+      price: price.custom_unit_amount,
+ 
+
     }
   })
  

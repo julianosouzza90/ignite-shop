@@ -1,3 +1,4 @@
+import { useCart } from "@/hooks/useCart"
 import { stripe } from "@/lib/stipe"
 import { ButtonAddToCart, ImageContainer, ProductDetails, ProductDetailsContainer } from "@/styles/pages/product"
 import { currencyBrlFormat } from "@/utils/numberFormat"
@@ -18,6 +19,8 @@ interface ProductProps {
 }
 export default function Product({product}: ProductProps) {
 
+  const {addItemToCart} = useCart();
+
   return (
     <ProductDetailsContainer>
       <ImageContainer>
@@ -27,7 +30,7 @@ export default function Product({product}: ProductProps) {
           <h2>{product.name}</h2>
           <span>{product.price}</span>
           <p>{product.description}</p>
-        <ButtonAddToCart>Colocar na sacola</ButtonAddToCart>
+        <ButtonAddToCart onClick={() => {addItemToCart(product)}}>Colocar na sacola</ButtonAddToCart>
       </ProductDetails>
     </ProductDetailsContainer>
   )

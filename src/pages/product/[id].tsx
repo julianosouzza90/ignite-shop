@@ -1,3 +1,4 @@
+import { Product } from "@/contexts/CartContext"
 import { useCart } from "@/hooks/useCart"
 import { stripe } from "@/lib/stipe"
 import { ButtonAddToCart, ImageContainer, ProductDetails, ProductDetailsContainer } from "@/styles/pages/product"
@@ -8,14 +9,7 @@ import { useRouter } from "next/router"
 import Stripe from "stripe"
 
 interface ProductProps {
-  product: {
-    productId: string,
-    name: string
-    description: string,
-    productImage: string,
-    price: string,
-    priceId: string
-  }
+  product: Product
 }
 export default function Product({product}: ProductProps) {
 
@@ -28,7 +22,7 @@ export default function Product({product}: ProductProps) {
       </ImageContainer>
       <ProductDetails>
           <h2>{product.name}</h2>
-          <span>{product.price}</span>
+          <span>{product.formattedPrice}</span>
           <p>{product.description}</p>
         <ButtonAddToCart onClick={() => {addItemToCart(product)}}>Colocar na sacola</ButtonAddToCart>
       </ProductDetails>
@@ -58,7 +52,8 @@ export const getStaticProps: GetStaticProps<any, {id: string}> = async ({params}
       name: product.name,
       description: product.description,
       productImage: product.images[0],
-      price:currencyBrlFormat(price.unit_amount as number / 100),
+      formattedPrice: currencyBrlFormat(price.unit_amount as number / 100),
+      price:price.unit_amount,
       priceId: price.id
      }
     }

@@ -15,7 +15,8 @@ interface Product {
     priceId: string,
     name: string
     description: string
-    productImage: string
+    productImage: string,
+    formattedPrice: string,
     price: number
   
 }

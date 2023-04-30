@@ -11,7 +11,8 @@ Durante o desenvolvido, consultei muito a documentação tanto do React, quando 
 - npm install 
 
 ### Preparação
- - Para rodar o projeto é necessário modificar o arquivo .env.example para .env.local e alterar a chave privada do stripe.
+ - Para rodar o projeto é necessário modificar o arquivo .env.example para .env.local e alterar as variáveis.
+ - Para saber mais sobre como as chaves do stripe, [consulte a documentação](https://stripe.com/docs/keys?locale=pt-BR#:~:text=Abra%20a%20p%C3%A1gina%20de%20chaves%20de%20API.%20Clique,recursos%20e%20permiss%C3%B5es%20da%20API%20para%20a%20chave.)
 ### Execução
 - npm run dev
 

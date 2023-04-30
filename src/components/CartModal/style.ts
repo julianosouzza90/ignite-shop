@@ -106,7 +106,7 @@ export const PurchaseInfo = styled('footer', {
   gap: '0.3rem',
   flexDirection: 'column',
   width: '90%',
-  paddingBottom: 'rem',
+  paddingBottom: '1rem',
   div: {
     display: 'flex',
     justifyContent: 'space-between',

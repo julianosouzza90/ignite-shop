@@ -9,13 +9,13 @@ export default async function handler(
     res.setHeader('Allow', 'POST')
     res.status(405).json({ error: 'Method not allowed.' })
   }
-
+  const successUrl = process.env.STRIPE_SUCCESS_URL as string
+  const cancelUrl = process.env.STRIPE_CANCEL_URL as string
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: pricesIdAndQuantities,
-    success_url:
-      'http://localhost:3000/success/?session_id={CHECKOUT_SESSION_ID}',
-    cancel_url: 'http://localhost:3000/cancel',
+    success_url: successUrl,
+    cancel_url: cancelUrl,
   })
 
   return res.status(201).json({

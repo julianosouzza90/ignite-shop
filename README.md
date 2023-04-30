@@ -6,7 +6,7 @@ Durante o desenvolvido, consultei muito a documentação tanto do React, quando 
 
 
 ### Instalação
-- ggit@github.com:julianosouzza90/ignite-shop.git
+- git clone git@github.com:julianosouzza90/ignite-shop.git
 - cd ignite-shop
 - npm install 
 

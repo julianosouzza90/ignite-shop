@@ -4,7 +4,7 @@ O projeto Shirt Shop Ignite  é uma aplicação desenvolvida para colocar em pr�
 [Veja o projeto no Figma:](https://www.figma.com/file/ji3uBZRhXXuzsKQnHstgnv/Ignite-Shop-2.0-(Copy)?type=design&node-id=0-1&t=9lqTH3gyEpuWAgjh-0) .
 Durante o desenvolvido, consultei muito a documentação tanto do React, quando do Nextjs, o que me agregou muito conhecimento, para além do necessário para resolver o desafio. 
 
-###Projeto online
+### Projeto online
 [Clique aqui para ir até  a página do projeto](https://shirt-shop-ignite.vercel.app/)
 
 ### Instalação

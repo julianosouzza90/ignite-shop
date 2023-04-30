@@ -1,37 +1,53 @@
-import { ReactNode, createContext, useState } from "react"
+import { ReactNode, createContext, useState } from 'react'
 
-export interface Product {
-  productId: string,
+export interface IProduct {
+  productId: string
   name: string
-  description: string,
-  productImage: string,
-  formattedPrice: string,
-  price: number,
-  priceId: string,
-
+  description: string
+  productImage: string
+  formattedPrice: string
+  price: number
+  priceId: string
 }
 interface CartContextProps {
-  itemsInCart: Product[],
-  totalPayable: number,
-  addItemToCart: (product: Product) => void
-  verifyIfProductAlreadyInCart: (product: Product) => boolean
+  itemsInCart: IProduct[]
+  totalPayable: number
+  addItemToCart: (product: IProduct) => void
+  verifyIfProductAlreadyInCart: (product: IProduct) => boolean
+  removeProductFromCart: (product: IProduct) => void
 }
-export const CartContext =  createContext<CartContextProps>({} as CartContextProps)
+export const CartContext = createContext<CartContextProps>(
+  {} as CartContextProps,
+)
 
-export default function CartContextProvider(props: {children: ReactNode}) {
-  const [itemsInCart, setItemsInCart] = useState<Product[]>([])
+export default function CartContextProvider(props: { children: ReactNode }) {
+  const [itemsInCart, setItemsInCart] = useState<IProduct[]>([])
+
   const totalPayable = itemsInCart.reduce((total, product) => {
-    console.log(product.price)
-    return total += product.price
-  },0)
-  function addItemToCart(product: Product) {
-    setItemsInCart(state => [...state, product])
+    return (total += product.price)
+  }, 0)
+
+  function addItemToCart(product: IProduct) {
+    setItemsInCart((state) => [...state, product])
   }
-  function verifyIfProductAlreadyInCart(product: Product) {
-    return itemsInCart.some(item => item.productId === product.productId)
+  function removeProductFromCart(product: IProduct) {
+    setItemsInCart((oldCart) =>
+      oldCart.filter((item) => item.productId !== product.productId),
+    )
+  }
+  function verifyIfProductAlreadyInCart(product: IProduct) {
+    return itemsInCart.some((item) => item.productId === product.productId)
   }
   return (
-    <CartContext.Provider value={{itemsInCart, addItemToCart,verifyIfProductAlreadyInCart, totalPayable}}>
+    <CartContext.Provider
+      value={{
+        itemsInCart,
+        addItemToCart,
+        verifyIfProductAlreadyInCart,
+        totalPayable,
+        removeProductFromCart,
+      }}
+    >
       {props.children}
     </CartContext.Provider>
   )

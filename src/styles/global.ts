@@ -1,5 +1,4 @@
-import { globalCss } from ".";
-
+import { globalCss } from '.'
 
 export const GlobalStyle = globalCss({
   ':root': {
@@ -22,4 +21,4 @@ export const GlobalStyle = globalCss({
     fontFamily: 'Roboto',
     fontWeight: 400,
   },
-});
+})

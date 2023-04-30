@@ -8,6 +8,7 @@ export const SuccessContainer = styled('section', {
   alignItems: 'center',
 
   minHeight: '70vh',
+  padding: '3rem',
 })
 export const ImagesContainer = styled('div', {
   display: 'flex',
@@ -21,12 +22,23 @@ export const ImagesContainer = styled('div', {
     padding: '2rem',
     margin: '-35px',
     zIndex: 1,
-    height: '18.8rem',
-    width: '18.8rem',
+    height: '15.8rem',
+    width: '15.8rem',
+    '&:nth-child(n+4)': {
+      display: 'none',
+    },
+    '@media (min-width: 720px)': {
+      height: '18.8rem',
+      width: '18.8rem',
+      '&:nth-child(n+4)': {
+        display: 'block',
+      },
+    },
   },
 })
 export const SuccessMessage = styled('div', {
   display: 'flex',
+  width: '100%',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

@@ -53,10 +53,16 @@ export default function Home({ products }: HomeProps) {
       setPreviousButtonCanBeDisplayed(currentId > 0)
       setNextButtonCanBeDisplayed(maxIds > 0 && maxIds !== currentId)
     },
-    slides: {
-      perView: 3,
-      spacing: 48,
+
+    breakpoints: {
+      '(min-width: 400px)': {
+        slides: { perView: 2, spacing: 5 },
+      },
+      '(min-width: 1000px)': {
+        slides: { perView: 3, spacing: 10 },
+      },
     },
+    slides: { perView: 1 },
   })
 
   return isLoading ? (

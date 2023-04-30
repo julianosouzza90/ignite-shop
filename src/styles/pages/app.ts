@@ -6,6 +6,7 @@ export const Container = styled('div', {
   alignItems: 'flex-start',
   justifyContent: 'center',
   minHeight: '100vh',
+
   maxWidth: 1080,
   margin: '0 auto',
 })

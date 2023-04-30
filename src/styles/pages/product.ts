@@ -2,8 +2,18 @@ import { styled } from '..'
 
 export const ProductDetailsContainer = styled('section', {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: '1fr',
   gap: '7.2rem',
+  marginLeft: '3rem',
+  justifyContent: 'center',
+
+  '@media (min-width: 790px)': {
+    gridTemplateColumns: '1fr 1fr',
+    marginLeft: '0',
+  },
+  '@media (min-width: 1027px)': {
+    padding: 0,
+  },
 })
 
 export const ImageContainer = styled('div', {
@@ -14,7 +24,11 @@ export const ImageContainer = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '8.8rem',
+
+  '@media (min-width: 790px)': {
+    padding: '8.8rem',
+  },
+
   img: {
     objectFit: 'cover',
   },
@@ -34,7 +48,7 @@ export const ProductDetails = styled('div', {
   span: {
     color: '$green300',
     fontSize: '3.2rem',
-    marginBottom: '4.2rem',
+    marginBottom: '8.2rem',
   },
   p: {
     fontSize: '1.8rem',

@@ -8,6 +8,7 @@ export const FooterContainer = styled('footer', {
   alignItems: 'center',
 
   width: '100%',
+  padding: '2rem',
 
   p: {
     lineHeight: '2.9rem',
@@ -16,6 +17,7 @@ export const FooterContainer = styled('footer', {
   div: {
     display: 'flex',
     alignItems: 'center',
+    textAlign: 'center',
     gap: '2rem',
 
     a: {

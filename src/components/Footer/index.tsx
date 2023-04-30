@@ -17,9 +17,13 @@ export function Footer() {
           <LinkedinLogo size={32} />
           juliano-souza-dev
         </a>
-        <a href="https://github.com/julianosouzza90">
+        <a
+          href="https://github.com/julianosouzza90"
+          target="_blank"
+          rel="noreferrer"
+        >
           <GithubLogo size={32} />
-          juliano-souza-dev
+          julianosouzza90
         </a>
       </div>
     </FooterContainer>
